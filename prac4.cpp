@@ -1,7 +1,7 @@
 // I intend to live life, not just exist.
 // Aeron
 #include <bits/stdc++.h>
-#define siz 100
+#define siz 1000000
 using namespace std;
 
 int getMax(vector<int> &arr)
@@ -115,6 +115,65 @@ int main()
     }
     int n = siz;
 
+    bool flag = true;
+
+    while (flag)
+    {
+        cout << endl
+             << "1.Count Sort" << endl;
+        cout << "2.Bucket Sort" << endl;
+        cout << "3.Radix Sort" << endl;
+        cout << "4.EXIT" << endl;
+        int choice;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+        {
+            clock_t startTime = clock();
+            countSort(arr, n);
+            clock_t endTime = clock();
+            cout << fixed;
+            cout << setprecision(11);
+            cout << endl
+                 << "Using Count Sort function, it took " << (double)(endTime - startTime) / CLOCKS_PER_SEC << " seconds" << endl;
+
+            break;
+        }
+        case 2:
+        {
+            clock_t startTime = clock();
+            bucketSort(arr, n,100);
+            clock_t endTime = clock();
+            cout << fixed;
+            cout << setprecision(11);
+            cout << endl
+                 << "Using Bucket Sort function, it took " << (double)(endTime - startTime) / CLOCKS_PER_SEC << " seconds" << endl;
+
+            break;
+        }
+        case 3:
+        {
+            clock_t startTime = clock();
+            radixsort(arr, n);
+            clock_t endTime = clock();
+            cout << fixed;
+            cout << setprecision(11);
+            cout << endl
+                 << "Using Radix Sort function, it took " << (double)(endTime - startTime) / CLOCKS_PER_SEC << " seconds" << endl;
+            break;
+        }
+        case 4:
+            flag = false;
+            break;
+
+        default:
+            cout << "INVALID INPUT" << endl;
+            break;
+        }
+    }
 
     return 0;
 }
